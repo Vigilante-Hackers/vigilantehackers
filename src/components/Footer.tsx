@@ -17,17 +17,41 @@ export const Footer = () => {
                 <span className="text-primary">Vigilante</span>Hackers
               </span>
             </Link>
+
             <p className="text-sm text-muted-foreground">
-              Empowering ethical hackers, promoting learning, and creating a strong collaborative cybersecurity ecosystem.
+              Empowering ethical hackers through learning, collaboration, and
+              responsible security research.
             </p>
+
+            {/* Social Links */}
             <div className="flex gap-4">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a
+                href="https://github.com/Vigilante-Hackers/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors"
+                aria-label="GitHub"
+              >
                 <Github className="w-5 h-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+
+              <a
+                href="https://x.com/Timelessde96163"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors"
+                aria-label="Twitter / X"
+              >
                 <Twitter className="w-5 h-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+
+              <a
+                href="https://discord.gg/pQTWB2USjX"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors"
+                aria-label="Discord"
+              >
                 <MessageCircle className="w-5 h-5" />
               </a>
             </div>
@@ -35,7 +59,9 @@ export const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-mono font-semibold text-foreground mb-4">Quick Links</h4>
+            <h4 className="font-mono font-semibold text-foreground mb-4">
+              Quick Links
+            </h4>
             <ul className="space-y-2">
               {["Home", "About", "Guidance", "CTF", "Resources"].map((link) => (
                 <li key={link}>
@@ -52,29 +78,28 @@ export const Footer = () => {
 
           {/* Resources */}
           <div>
-            <h4 className="font-mono font-semibold text-foreground mb-4">Resources</h4>
-            <ul className="space-y-2">
-              {["Learning Paths", "CTF Writeups", "Tools", "Community Guidelines", "Blog"].map((link) => (
-                <li key={link}>
-                  <span className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer">
-                    {link}
-                  </span>
-                </li>
-              ))}
+            <h4 className="font-mono font-semibold text-foreground mb-4">
+              Resources
+            </h4>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li>Learning Paths</li>
+              <li>CTF Write-ups</li>
+              <li>Tools & References</li>
+              <li>Community Principles</li>
+              <li>Research & Blogs</li>
             </ul>
           </div>
 
           {/* Legal */}
           <div>
-            <h4 className="font-mono font-semibold text-foreground mb-4">Legal</h4>
-            <ul className="space-y-2">
-              {["Privacy Policy", "Terms of Service", "Code of Conduct", "Ethical Guidelines"].map((link) => (
-                <li key={link}>
-                  <span className="text-sm text-muted-foreground hover:text-primary transition-colors cursor-pointer">
-                    {link}
-                  </span>
-                </li>
-              ))}
+            <h4 className="font-mono font-semibold text-foreground mb-4">
+              Legal
+            </h4>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li>Privacy Policy</li>
+              <li>Terms of Service</li>
+              <li>Code of Conduct</li>
+              <li>Ethical Guidelines</li>
             </ul>
           </div>
         </div>
@@ -83,10 +108,12 @@ export const Footer = () => {
         <div className="mt-12 pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-muted-foreground font-mono">
-              © {new Date().getFullYear()} Vigilante Hackers Community. All rights reserved.
+              © {new Date().getFullYear()} Vigilante Hackers Community. All rights
+              reserved.
             </p>
-            <p className="text-xs text-muted-foreground">
-              <span className="text-primary">⚡</span> Built for ethical hackers, by ethical hackers
+
+            <p className="text-xs text-muted-foreground font-mono">
+              Built by the community • For ethical security research
             </p>
           </div>
         </div>
@@ -96,8 +123,10 @@ export const Footer = () => {
       <div className="bg-muted/50 border-t border-border py-4">
         <div className="container mx-auto px-4">
           <p className="text-xs text-muted-foreground text-center">
-            <strong className="text-foreground">Disclaimer:</strong> All content on this platform is for educational purposes only. 
-            We strictly prohibit any illegal hacking activities. Always obtain proper authorization before testing security.
+            <strong className="text-foreground">Disclaimer:</strong> All content
+            on this platform is for educational purposes only. Illegal or
+            unauthorized activities are strictly prohibited. Always obtain
+            explicit permission before performing security testing.
           </p>
         </div>
       </div>

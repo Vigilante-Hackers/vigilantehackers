@@ -49,7 +49,7 @@ const platforms = [
     members: "500+",
     icon: Github,
     color: "bg-foreground",
-    link: "https://github.com/Vigilante-Hackers/vigilantehackers",
+    link: "https://github.com/Vigilante-Hackers",
   },
   {
     name: "LinkedIn",

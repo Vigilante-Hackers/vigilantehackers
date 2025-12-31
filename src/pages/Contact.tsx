@@ -234,7 +234,7 @@ const Contact = () => {
                     icon={<Github className="w-6 h-6" />}
                     title="GitHub"
                     subtitle="Open source projects"
-                    link="https://github.com/Vigilante-Hackers/vigilantehackers"
+                    link="https://github.com/Vigilante-Hackers"
                   />
 
                   <SocialLink
