@@ -30,9 +30,9 @@ const guidelines = [
 
 const platforms = [
   {
-    name: "Discord",
+    name: "Whatsapp",
     description: "Our main community hub for real-time discussions, CTF team-ups, and networking.",
-    members: "3,000+",
+    members: "1,600+",
     icon: MessageCircle,
     color: "bg-[#5865F2]",
     link: "#",
@@ -43,16 +43,17 @@ const platforms = [
     members: "500+",
     icon: Github,
     color: "bg-foreground",
-    link: "#",
+    link: "https://github.com/Vigilante-Hackers",
   },
-  {
-    name: "Twitter/X",
-    description: "Follow us for updates, security news, and community highlights.",
-    members: "2,000+",
-    icon: Twitter,
-    color: "bg-foreground",
-    link: "#",
-  },
+ {
+  name: "LinkedIn",
+  description: "Connect with us for professional updates, cybersecurity insights, and community achievements.",
+  members: "2,000+",
+  icon: Linkedin,
+  color: "bg-foreground",
+  link: "https://www.linkedin.com/company/vigilante-hackers/"
+}
+,
 ];
 
 const contributionWays = [
