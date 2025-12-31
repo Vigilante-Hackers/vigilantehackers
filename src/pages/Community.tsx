@@ -15,6 +15,9 @@ import {
   XCircle,
   Github,
   Linkedin,
+  Twitter,
+  Instagram,
+  Youtube,
 } from "lucide-react";
 
 /* ------------------ Guidelines ------------------ */
@@ -32,30 +35,54 @@ const guidelines = [
 /* ------------------ Platforms ------------------ */
 const platforms = [
   {
-    name: "WhatsApp",
+    name: "Discord",
     description:
-      "Our main community hub for real-time discussions, CTF team-ups, and networking.",
-    members: "1,600+",
+      "Join live discussions, announcements, CTF collabs, and community support.",
+    members: "Active",
     icon: MessageCircle,
-    color: "bg-[#25D366]",
-    link: "#",
+    color: "bg-primary",
+    link: "https://discord.gg/pQTWB2USjX",
   },
   {
     name: "GitHub",
-    description: "Contribute to community projects, tools, and resources.",
+    description: "Open-source tools, write-ups, and community projects.",
     members: "500+",
     icon: Github,
     color: "bg-foreground",
-    link: "https://github.com/Vigilante-Hackers",
+    link: "https://github.com/Vigilante-Hackers/vigilantehackers",
   },
   {
     name: "LinkedIn",
     description:
-      "Connect with us for professional updates, cybersecurity insights, and community achievements.",
+      "Professional updates, cybersecurity insights, and achievements.",
     members: "2,000+",
     icon: Linkedin,
     color: "bg-foreground",
     link: "https://www.linkedin.com/company/vigilante-hackers/",
+  },
+  {
+    name: "Twitter / X",
+    description: "Announcements, security news, and community updates.",
+    members: "Growing",
+    icon: Twitter,
+    color: "bg-foreground",
+    link: "https://x.com/Timelessde96163",
+  },
+  {
+    name: "Instagram",
+    description: "Community posts, reels, and highlights.",
+    members: "Growing",
+    icon: Instagram,
+    color: "bg-pink-500",
+    link: "https://www.instagram.com/vigilantehackers",
+  },
+  {
+    name: "YouTube",
+    description: "Tutorials, walkthroughs, and cybersecurity content.",
+    members: "Growing",
+    icon: Youtube,
+    color: "bg-red-500",
+    link: "https://youtube.com/@vigilantehackers-d9v",
   },
 ];
 
@@ -130,7 +157,7 @@ const Community = () => {
             Where to <span className="text-gradient">Find Us</span>
           </motion.h2>
 
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {platforms.map((platform, index) => {
               const Icon = platform.icon;
               return (
@@ -141,7 +168,7 @@ const Community = () => {
                   rel="noopener noreferrer"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: index * 0.08 }}
                   viewport={{ once: true }}
                   className="block"
                 >
@@ -161,7 +188,7 @@ const Community = () => {
                     </p>
 
                     <span className="text-primary font-mono font-semibold">
-                      {platform.members} members
+                      {platform.members}
                     </span>
                   </CyberCard>
                 </motion.a>
@@ -186,7 +213,6 @@ const Community = () => {
 
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Our community thrives on mutual respect and shared values.
-              Here's what we expect from all members.
             </p>
           </motion.div>
 
@@ -205,9 +231,9 @@ const Community = () => {
                 }`}
               >
                 {item.allowed ? (
-                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-primary" />
                 ) : (
-                  <XCircle className="w-5 h-5 text-destructive flex-shrink-0" />
+                  <XCircle className="w-5 h-5 text-destructive" />
                 )}
                 <span className="text-sm">{item.rule}</span>
               </motion.div>
@@ -236,9 +262,13 @@ const Community = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="hero" size="xl" asChild>
-                <a href="#" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://discord.gg/pQTWB2USjX"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <MessageCircle className="w-5 h-5 mr-2" />
-                  Join WhatsApp
+                  Join Discord
                 </a>
               </Button>
 
