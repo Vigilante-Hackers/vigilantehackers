@@ -35,9 +35,18 @@ const guidelines = [
 /* ------------------ Platforms ------------------ */
 const platforms = [
   {
+    name: "WhatsApp",
+    description:
+      "Primary community hub for discussions, announcements, and quick support.",
+    members: "Active",
+    icon: MessageCircle,
+    color: "bg-green-500",
+    link: "https://chat.whatsapp.com/DeXy9sTQmhuK5nvQCvi64a",
+  },
+  {
     name: "Discord",
     description:
-      "Join live discussions, announcements, CTF collabs, and community support.",
+      "Live discussions, CTF collaboration, voice chats, and announcements.",
     members: "Active",
     icon: MessageCircle,
     color: "bg-primary",
@@ -49,7 +58,7 @@ const platforms = [
     members: "500+",
     icon: Github,
     color: "bg-foreground",
-    link: "https://github.com/Vigilante-Hackers",
+    link: "https://github.com/Vigilante-Hackers/",
   },
   {
     name: "LinkedIn",
@@ -263,12 +272,12 @@ const Community = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="hero" size="xl" asChild>
                 <a
-                  href="https://discord.gg/pQTWB2USjX"
+                  href="https://chat.whatsapp.com/DeXy9sTQmhuK5nvQCvi64a"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <MessageCircle className="w-5 h-5 mr-2" />
-                  Join Discord
+                  Join WhatsApp
                 </a>
               </Button>
 
