@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Shield, Terminal } from "lucide-react";
+import { Menu, X, Shield, Terminal, LogIn, LogOut, User } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/hooks/useAuth";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -18,7 +19,13 @@ const navLinks = [
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, signOut, loading } = useAuth();
 
+  const handleSignOut = async () => {
+    await signOut();
+    navigate("/");
+  };
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
       <div className="container mx-auto px-4">
@@ -52,11 +59,36 @@ export const Navbar = () => {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden lg:block">
-            <Button variant="outline" size="sm" asChild>
-              <Link to="/contact">Join Us</Link>
-            </Button>
+          {/* Auth Buttons */}
+          <div className="hidden lg:flex items-center gap-2">
+            {loading ? (
+              <div className="w-20 h-8 bg-primary/10 animate-pulse rounded" />
+            ) : user ? (
+              <>
+                <Button variant="ghost" size="sm" asChild>
+                  <Link to="/profile" className="flex items-center gap-2 font-mono">
+                    <User className="w-4 h-4" />
+                    Profile
+                  </Link>
+                </Button>
+                <Button variant="outline" size="sm" onClick={handleSignOut} className="font-mono">
+                  <LogOut className="w-4 h-4 mr-2" />
+                  Sign Out
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button variant="ghost" size="sm" asChild>
+                  <Link to="/auth" className="flex items-center gap-2 font-mono">
+                    <LogIn className="w-4 h-4" />
+                    Sign In
+                  </Link>
+                </Button>
+                <Button variant="outline" size="sm" asChild>
+                  <Link to="/auth">Join Us</Link>
+                </Button>
+              </>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -87,10 +119,32 @@ export const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
-              <div className="pt-4 px-4">
-                <Button variant="outline" className="w-full" asChild>
-                  <Link to="/contact">Join Us</Link>
-                </Button>
+              <div className="pt-4 px-4 flex flex-col gap-2">
+                {loading ? (
+                  <div className="w-full h-10 bg-primary/10 animate-pulse rounded" />
+                ) : user ? (
+                  <>
+                    <Button variant="ghost" className="w-full justify-start" asChild>
+                      <Link to="/profile" onClick={() => setIsOpen(false)} className="flex items-center gap-2 font-mono">
+                        <User className="w-4 h-4" />
+                        Profile
+                      </Link>
+                    </Button>
+                    <Button variant="outline" className="w-full" onClick={() => { handleSignOut(); setIsOpen(false); }}>
+                      <LogOut className="w-4 h-4 mr-2" />
+                      Sign Out
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Button variant="outline" className="w-full" asChild>
+                      <Link to="/auth" onClick={() => setIsOpen(false)}>
+                        <LogIn className="w-4 h-4 mr-2" />
+                        Sign In / Join Us
+                      </Link>
+                    </Button>
+                  </>
+                )}
               </div>
             </div>
           </div>
