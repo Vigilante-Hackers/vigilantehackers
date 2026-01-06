@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { z } from "zod";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -15,6 +16,32 @@ import {
   Save, Loader2, CheckCircle, TrendingUp
 } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
+
+// Validation schema for profile updates
+const profileSchema = z.object({
+  username: z
+    .string()
+    .trim()
+    .min(3, "Username must be at least 3 characters")
+    .max(50, "Username must be less than 50 characters")
+    .regex(/^[a-zA-Z0-9_]*$/, "Username can only contain letters, numbers, and underscores")
+    .nullable()
+    .or(z.literal("")),
+  bio: z
+    .string()
+    .max(1000, "Bio must be less than 1000 characters")
+    .nullable()
+    .or(z.literal("")),
+  avatar_url: z
+    .string()
+    .max(500, "Avatar URL must be less than 500 characters")
+    .refine(
+      (val) => !val || val === "" || /^https?:\/\/.+/.test(val),
+      "Avatar URL must be a valid URL starting with http:// or https://"
+    )
+    .nullable()
+    .or(z.literal("")),
+});
 
 interface Profile {
   username: string | null;
@@ -111,14 +138,26 @@ const Profile = () => {
   const handleUpdateProfile = async () => {
     if (!user) return;
     
+    // Validate profile data before submitting
+    const validation = profileSchema.safeParse(profile);
+    if (!validation.success) {
+      const errorMessage = validation.error.errors[0]?.message || "Invalid input";
+      toast({
+        title: "Validation Error",
+        description: errorMessage,
+        variant: "destructive",
+      });
+      return;
+    }
+    
     setIsUpdating(true);
     try {
       const { error } = await supabase
         .from("profiles")
         .update({
-          username: profile.username,
-          bio: profile.bio,
-          avatar_url: profile.avatar_url,
+          username: profile.username || null,
+          bio: profile.bio || null,
+          avatar_url: profile.avatar_url || null,
         })
         .eq("user_id", user.id);
 
